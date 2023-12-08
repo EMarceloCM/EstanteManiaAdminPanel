@@ -1,0 +1,25 @@
+﻿@page "/author/edit/{authorId:int}"
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorService _authorService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+<AuthorForm authorDTO="Author" OnValidSubmit="EditAuthor"
+              ButtonTextCancel="Cancelar" ButtonTextSubmit="Salvar">
+</AuthorForm>
+
+@code {
+    [Parameter] public int authorId { get; set; }
+    private AuthorDTO Author = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Author = await _authorService.GetAuthorByIdAsync(authorId);
+    }
+
+    private async Task EditAuthor()
+    {
+        await _authorService.UpdateAuthorAsync(authorId, Author);
+        nav.NavigateTo("authors");
+    }
+}

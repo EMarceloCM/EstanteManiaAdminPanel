@@ -1,0 +1,25 @@
+﻿@page "/category/edit/{categoryId:int}"
+@using Microsoft.AspNetCore.Authorization
+@inject ICategoryService _categoryService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+<CategoryForm categoryDTO="Category" OnValidSubmit="EditCategory"
+          ButtonTextCancel="Cancelar" ButtonTextSubmit="Salvar">
+</CategoryForm>
+
+@code {
+    [Parameter] public int categoryId { get; set; }
+    private CategoryDTO Category = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Category = await _categoryService.GetCategoryByIdAsync(categoryId);
+    }
+
+    private async Task EditCategory()
+    {
+        await _categoryService.UpdateCategoryAsync(categoryId, Category);
+        nav.NavigateTo("categories");
+    }
+}

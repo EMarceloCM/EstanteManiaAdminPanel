@@ -1,0 +1,90 @@
+﻿@page "/fileuploader"
+@using Microsoft.AspNetCore.Authorization
+@inject IFileUploadService _fileUploadService
+@attribute [Authorize]
+
+<h3>Enviar Arquivos para o Servidor</h3>
+
+<p>
+    Selecione até 3 arquivos: <InputFile OnChange="@SelectFile" multiple/>
+</p>
+<p>
+    Tamanho máximo do arquivo: 400 KB (409600 bytes)
+</p>
+
+@if (filesNames.Count > 0)
+{
+    <ul>
+        @foreach (var _fileName in filesNames)
+        {
+            <li>Arquivo/Tamanho: @_fileName</li>
+        }
+    </ul>
+}
+@if (uploadResults.Count > 0)
+{
+    <div class="card">
+        <div class="card-body btn-success">
+            <ul>
+                @foreach (var _file in uploadResults)
+                {
+                    <li>
+                        @if (_file.ErrorCode == 0)
+                        {
+                            <b>Enviado: @_file.FileName</b>
+                        }
+                        else
+                        {
+                            <i>
+                                Não Enviado: @_file.FileName
+                                (Erro: @_file.ErrorCode)
+                            </i>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@code {
+    private int maxFileNumber = 3;
+    private long maxFileSize = long.MaxValue;
+    private List<string> filesNames = new();
+    private List<UploadResult> uploadResults = new();
+    private const string apiEndpoint = "/api/FileUpload/upload";
+
+    private async Task SelectFile(InputFileChangeEventArgs e)
+    {
+        using var content = new MultipartFormDataContent();
+
+        foreach (var _file in e.GetMultipleFiles(maxFileNumber))
+        {
+            var fileContent = new StreamContent(_file.OpenReadStream(maxFileSize));
+            fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(_file.ContentType);
+
+            filesNames.Add($"{_file.Name} - {_file.Size} bytes");
+
+            content.Add(content: fileContent, name: "\"files\"", fileName: _file.Name);
+        }
+
+        try
+        {
+            var response = await _fileUploadService.UploadFileAsync(apiEndpoint, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var newUploadResult = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
+
+                if (newUploadResult != null)
+                {
+                    uploadResults = uploadResults.Concat(newUploadResult).ToList();
+                }
+            }
+        }
+        catch (Exception)
+        {   
+            throw;
+        }
+    }
+}

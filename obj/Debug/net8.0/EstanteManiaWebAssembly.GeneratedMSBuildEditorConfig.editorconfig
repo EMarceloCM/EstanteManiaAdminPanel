@@ -1,0 +1,151 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = EstanteManiaWebAssembly
+build_property.RootNamespace = EstanteManiaWebAssembly
+build_property.ProjectDir = C:\Users\edmyl\source\repos\EstanteManiaWebAssembly\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\edmyl\source\repos\EstanteManiaWebAssembly
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/Confirm.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XENvbmZpcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/DisplayMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XERpc3BsYXlNZXNzYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/ImagemFoto.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEltYWdlbUZvdG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/Pagination.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBhZ2luYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/Spinner.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFNwaW5uZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Authentication/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Authentication/LoginDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9naW5EaXNwbGF5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Authentication/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9nb3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Authentication/NotAuthorized.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTm90QXV0aG9yaXplZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Author/AuthorForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvckZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Author/Authors.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Author/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXENyZWF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Author/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Books/BookForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NcQm9va0Zvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Books/Books.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NcQm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Books/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NcQ3JlYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Books/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NcRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Books/FileUploader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NcRmlsZVVwbG9hZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Catalogo/BookByCategory.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ29cQm9va0J5Q2F0ZWdvcnkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Catalogo/Catalogo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ29cQ2F0YWxvZ28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Catalogo/ShowBooks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ29cU2hvd0Jvb2tzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Categories/Categories.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDYXRlZ29yaWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Categories/CategoryForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDYXRlZ29yeUZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Categories/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDcmVhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Categories/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xFZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/CategoryBooksNavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XENhdGVnb3J5Qm9va3NOYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-37b48dbrt9
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-c84vvi8qay
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-87enh75keg
+
+[C:/Users/edmyl/source/repos/EstanteManiaWebAssembly/Pages/Catalogo/BookDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ29cQm9va0RldGFpbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xxssh3g5ax

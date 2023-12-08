@@ -1,0 +1,25 @@
+﻿@page "/book/edit/{bookid:int}"
+@using Microsoft.AspNetCore.Authorization
+@inject IBookService _bookService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+<BookForm bookDTO="Book" OnValidSubmit="EditBook"
+    ButtonTextCancel="Cancelar" ButtonTextSubmit="Salvar">
+</BookForm>
+
+@code {
+    [Parameter] public int bookid { get; set; }
+    private BookDTO Book = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Book = await _bookService.GetBookByIdAsync(bookid);
+    }
+
+    private async Task EditBook()
+    {
+        await _bookService.UpdateBookAsync(bookid, Book);
+        nav.NavigateTo("books");
+    }
+}

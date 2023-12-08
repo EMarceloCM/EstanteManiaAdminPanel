@@ -1,0 +1,79 @@
+﻿@page "/catalogo"
+@inject IBookService _bookService
+@inject NavigationManager nav
+
+@if (books == null)
+{
+    <Spinner />
+}
+else
+{
+    <div class="d-inline-flex">
+        <input type="text" class="form-control mb-2 mr-sm-2" @bind="filterName" placeholder="Filtrar por título" />&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary mr-sm-2 mb-2" @onclick="Filtrar">Filtrar</button>&nbsp;
+        <button type="button" class="btn btn-danger mb-2" @onclick="CleanFilter">Limpar</button>
+    </div> <br /><br />
+
+    <h2 class="mb-5">Livros</h2>
+    @if (books.Count() > 0)
+    {
+        <div class="row mt-3">
+            <ShowBooks Books="@books"></ShowBooks>
+        </div>
+    }else
+    {
+        <p>Nenhum livro encontrado...</p>    
+    }
+}
+
+@code {
+    public IEnumerable<BookDTO>? books { get; set; }
+    public string? ErrorMessage { get; set; }
+    private string? filterName = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadCatalogo();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+
+    private async Task Filtrar()
+    {
+        await LoadCatalogo(filterName);
+    }
+
+    private async Task CleanFilter()
+    {
+        filterName = string.Empty;
+        await LoadCatalogo();
+    }
+
+    private async Task LoadCatalogo(string? title = null)
+    {
+        try
+        {
+            if (!string.IsNullOrEmpty(title))
+            {
+                books = await _bookService.GetBookByTitle(title);
+            }
+            else
+            {
+                books = await _bookService.GetBooksAsync();
+            }
+        }
+        catch (Exception)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+}

@@ -1,0 +1,21 @@
+﻿<Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <div>Not Authorizes</div>
+                </NotAuthorized>
+                <Authorizing>
+                    <div>Authorizing...</div>
+                </Authorizing>
+            </Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>

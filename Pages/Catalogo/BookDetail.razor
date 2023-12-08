@@ -1,0 +1,76 @@
+﻿@page "/BookDetail/{Id:int}"
+
+@if (Book is null && ErrorMessage == null)
+{
+    <Spinner />
+}
+else if (ErrorMessage != null)
+{
+    <DisplayMessage ErrorMessage="@ErrorMessage" />
+}
+else
+{
+    <div class="container">
+        <h3 class="section-header">Detalhes do Livro</h3>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img class="figure-img" width="280" height="350" src="@Book.CoverImg" alt="Capa do Livro" />
+            </div>
+            <div class="col-md-8">
+                <h2>@Book.Title</h2>
+                <p class="mb-3">@Book.Description</p>
+                <p><strong>Autora:</strong> @Author!.Name</p>
+                <p><strong>Ilustradora:</strong> @Book.Illustrator</p>
+                <p><strong>Editora:</strong> @Book.Publisher</p>
+                <p><strong>Língua:</strong> @Book.Language</p>
+                <p><strong>Formato:</strong> @Book.Format</p>
+                <p><strong>Tipo:</strong> @Book.Type</p>
+                <p><strong>Páginas:</strong> @Book.PageNumber páginas</p>
+                <p><strong>Publicação:</strong> @Book.PublishDate.ToShortDateString()</p>
+                <p><strong>Condição:</strong> @Book.Condition</p>
+                <p><strong>Disponibilidade:</strong> @Book.Availability</p>
+                <p class="mb-4"><strong>Preço:</strong> @Book.Price.ToString("C") (Estoque: @Book.Stock itens)</p>
+                <div>
+                    <button class="btn btn-success">
+                        Curtir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Inject] public IBookService? _bookService { get; set; }
+    [Inject] public IAuthorService? _authorService { get; set; }
+    [Inject] public NavigationManager nav { get; set; }
+    [Parameter] public int Id { get; set; }
+    public BookDTO? Book { get; set; }
+    private AuthorDTO? Author { get; set; }
+    public string? ErrorMessage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Book = await GetBookById(Id);
+            Author = await GetAuthorById(Book.AuthorId);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+
+    private async Task<BookDTO> GetBookById(int id)
+    {
+        Book = await _bookService!.GetBookByIdAsync(id);
+        return Book;
+    }
+
+    private async Task<AuthorDTO> GetAuthorById(int id)
+    {
+        Author = await _authorService!.GetAuthorByIdAsync(id);
+        return Author;
+    }
+}

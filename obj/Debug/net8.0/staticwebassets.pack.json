@@ -1,0 +1,73 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\obj\\Debug\\net8.0\\compressed\\73uisg8d86.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\obj\\Debug\\net8.0\\scopedcss\\bundle\\EstanteManiaWebAssembly.styles.css",
+      "PackagePath": "staticwebassets\\EstanteManiaWebAssembly.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\Images\\semfoto.jpg",
+      "PackagePath": "staticwebassets\\Images\\semfoto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\Spinner-2.gif",
+      "PackagePath": "staticwebassets\\Spinner-2.gif"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\mangas.jpg",
+      "PackagePath": "staticwebassets\\mangas.jpg"
+    },
+    {
+      "Id": "C:\\Users\\edmyl\\source\\repos\\EstanteManiaWebAssembly\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EstanteManiaWebAssembly.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EstanteManiaWebAssembly.props",
+      "PackagePath": "build\\EstanteManiaWebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EstanteManiaWebAssembly.props",
+      "PackagePath": "buildMultiTargeting\\EstanteManiaWebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EstanteManiaWebAssembly.props",
+      "PackagePath": "buildTransitive\\EstanteManiaWebAssembly.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

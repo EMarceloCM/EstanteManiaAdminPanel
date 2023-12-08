@@ -1,0 +1,140 @@
+﻿@page "/authors"
+@inject IAuthorService _authorService
+@inject NavigationManager nav
+
+<h2>Author</h2>
+
+<div>
+    <a class="btn btn-success" href="author/create">Novo Author</a>
+</div>
+<br />
+
+@if (authors != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in authors)
+            {
+                <tr>
+                    <td>@author.Id</td>
+                    <td>@author.Name</td>
+                    <td>@author.Description</td>
+                    <td><a class="btn btn-primary" href="author/edit/@author.Id">Editar</a></td>
+                    <td><a class="btn btn-danger" @onclick="@(() => Delete(author.Id))" style="color:white;">Deletar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <DisplayMessage ErrorMessage="Não foi possível acessar os autores." />
+}
+
+<div>
+    <DisplayMessage ErrorMessage="@errorMessage" />
+</div>
+
+<Confirm @ref="Confirm" onCancel="CancelConfirm" onConfirm="DeleteConfirmed">
+    <div>Deseja realmente excluir este author ?</div>
+    <p>É necessário que o author não esteja vinculado a nenhum livro!</p>
+</Confirm>
+
+<div>
+    <label for="PageSize">Itens por página:</label>
+    <select id="PageSize" value="@PageSize" @onchange="PageSizeChanged">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+</div>
+
+<EstanteManiaWebAssembly.Layout.Pagination CurrentPage="currentPage" Raio="3" SelectedPage="SelectedPage" TotalPages="TotalPages">
+</EstanteManiaWebAssembly.Layout.Pagination>
+
+@code {
+    private IEnumerable<AuthorDTO> authors = [];
+    private string? errorMessage;
+    private Confirm Confirm = new();
+    private PaginationAuthorResponseDTO paginationAuthorDTO = new();
+    private int authorID;
+    private int currentPage = 1;
+    private int PageSize = 5;
+    private int TotalPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadAuthors();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private async Task LoadAuthors(int pagina = 1, int pageSize = 5)
+    {
+        try
+        {
+            paginationAuthorDTO = await _authorService.GetAuthorWithPagination(pagina, pageSize);
+            authors = paginationAuthorDTO.Authors!;
+            TotalPages = paginationAuthorDTO.TotalPages;
+        }
+        catch (Exception)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private async Task SelectedPage(int pagina)
+    {
+        currentPage = pagina;
+        await LoadAuthors(pagina);
+    }
+
+    private async void PageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            PageSize = newSize;
+            await LoadAuthors(currentPage, PageSize);
+            StateHasChanged();
+        }
+        else
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private void Delete(int authorId)
+    {
+        Confirm.Show();
+        authorID = authorId;
+    }
+
+    private void CancelConfirm()
+    {
+        Confirm.Hidde();
+    }
+
+    private async Task DeleteConfirmed()
+    {
+        var result = await _authorService.DeleteAuthorAsync(authorID);
+        Confirm.Hidde();
+        await LoadAuthors();
+
+        if (!result)
+            errorMessage = "Não é possível deletar um author com 1 ou mais vínculos.";
+    }
+}

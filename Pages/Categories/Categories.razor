@@ -1,0 +1,139 @@
+﻿@page "/categories"
+@inject ICategoryService _categoryService
+@inject NavigationManager nav
+
+<h2>Categorias</h2>
+
+<div>
+    <a class="btn btn-success" href="category/create">Nova Categoria</a>
+</div>
+<br />
+
+@if(categories != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">IconCSS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var category in categories)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                    <td>@category.Description</td>
+                    <td>@category.IconCSS</td>
+                    <td><a class="btn btn-primary" href="category/edit/@category.Id">Editar</a></td>
+                    <td><a class="btn btn-danger" @onclick="@(() => Delete(category.Id))" style="color:white;">Deletar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <DisplayMessage ErrorMessage="Não foi possível acessar as categorias." />
+}
+
+<div>
+    <DisplayMessage ErrorMessage="@errorMessage" />
+</div>
+
+<Confirm @ref="Confirm" onCancel="CancelConfirm" onConfirm="DeleteConfirmed">
+    <div>Deseja realmente excluir esta categoria ?</div>
+</Confirm>
+
+<div>
+    <label for="PageSize">Itens por página:</label>
+    <select id="PageSize" value="@PageSize" @onchange="PageSizeChanged">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+</div>
+
+<EstanteManiaWebAssembly.Layout.Pagination CurrentPage="currentPage" Raio="3" SelectedPage="SelectedPage" TotalPages="TotalPages">
+</EstanteManiaWebAssembly.Layout.Pagination>
+
+@code {
+    private IEnumerable<CategoryDTO> categories = [];
+    private Confirm Confirm = new();
+    private string? errorMessage;
+    private int categoryID;
+
+    private PaginationCategoryResponseDTO paginationCategoryDTO = new();
+    private int TotalPages;
+    private int PageSize = 5;
+    private int currentPage = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadCategories();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    protected async Task LoadCategories(int pagina = 1, int pageSize = 5)
+    {
+        try
+        {
+            paginationCategoryDTO = await _categoryService.GetCategoryWithPagination(pagina, pageSize);
+            categories = paginationCategoryDTO.Categories!;
+            TotalPages = paginationCategoryDTO.TotalPages;
+        }
+        catch (Exception)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private async Task SelectedPage(int pagina)
+    {
+        currentPage = pagina;
+        await LoadCategories(pagina);
+    }
+
+    private async void PageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            PageSize = newSize;
+            await LoadCategories(currentPage, PageSize);
+            StateHasChanged();
+        }
+        else
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private void Delete(int categoryId)
+    {
+        Confirm.Show();
+        categoryID = categoryId;
+    }
+
+    private void CancelConfirm()
+    {
+        Confirm.Hidde();
+    }
+
+    private async Task DeleteConfirmed()
+    {
+        await _categoryService.DeleteCategoryAsync(categoryID);
+        Confirm.Hidde();
+        await LoadCategories();
+    }
+}

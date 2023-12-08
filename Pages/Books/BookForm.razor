@@ -1,0 +1,288 @@
+﻿@inject NavigationManager nav
+
+<EditForm Model="@bookDTO" OnValidSubmit="@OnValidSubmit">
+    <ValidationSummary />
+    <DataAnnotationsValidator />
+
+    <div class="form-group row">
+        <div class="col-sm-8">
+            <label for="titulo">Título:</label>
+            <div>
+                <InputText @bind-Value="bookDTO.Title" class="form-control" />
+                <ValidationMessage For="@(() => bookDTO.Title)" />
+            </div>
+
+            <label for="author">Author:</label>
+            <div>
+                <select @onchange="@SelectedAuthor" class="form-control">
+                    @if (authors != null)
+                    {
+                        @foreach (var author in authors)
+                        {
+                            <option value="@author.Id" selected="@IsAuthorSelected(author.Id)">
+                                @author.Name
+                            </option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <label for="descricao">Descrição:</label>
+            <div>
+                <InputText @bind-Value="bookDTO.Description" class="form-control" />
+                <ValidationMessage For="@(() => bookDTO.Description)" />
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+            <ImagemFoto ImagemRemota="@bookDTO.CoverImg" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+
+        <div class="col-sm-4">
+            <label for="formato">Formato:</label>
+            <InputText @bind-Value="bookDTO.Format" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Format)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="paginas">Páginas:</label>
+            <InputNumber @bind-Value="bookDTO.PageNumber" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.PageNumber)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label for="publicacao">Publicação:</label>
+            <InputDate @bind-Value="bookDTO.PublishDate" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.PublishDate)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="editora">Editora:</label>
+            <InputText @bind-Value="bookDTO.Publisher" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Publisher)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="lingua">Língua:</label>
+            <InputText @bind-Value="bookDTO.Language" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Language)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label for="tipo">Tipo:</label>
+            <InputSelect @bind-Value="@bookDTO.Type" class="form-control">
+                @foreach (var type in Enum.GetValues(typeof(EstanteManiaWebAssembly.Models.Enums.Type)))
+                {
+                    <option value="@type">@type</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => bookDTO.Type)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="condicao">Condição:</label>
+            <InputSelect @bind-Value="@bookDTO.Condition" class="form-control">
+                @foreach (var condition in Enum.GetValues(typeof(Condition)))
+                {
+                    <option value="@condition">@condition</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => bookDTO.Condition)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="disponibilidade">Disponibilidade:</label>
+            <InputSelect @bind-Value="@bookDTO.Availability" class="form-control">
+                @foreach (var availability in Enum.GetValues(typeof(Availability)))
+                {
+                    <option value="@availability">@availability</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => bookDTO.Availability)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label for="volume">Volume:</label>
+            <InputNumber @bind-Value="bookDTO.Volume" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Volume)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="ilustrador">Ilustrador:</label>
+            <InputText @bind-Value="bookDTO.Illustrator" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Illustrator)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="categoria">Categoria:</label>
+            <select multiple @onchange="@SelectedCategories" class="form-control">
+                @if (categories != null)
+                {
+                    @foreach (var category in categories)
+                    {
+                        <option value="@category.Id">
+                            @category.Name
+                        </option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label for="preco">Preço:</label>
+            <InputNumber @bind-Value="bookDTO.Price" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Price)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="estoque">Estoque:</label>
+            <InputNumber @bind-Value="bookDTO.Stock" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Stock)" />
+        </div>
+
+        <div class="col-sm-4">
+            <label for="desconto">Desconto:</label>
+            <InputNumber @bind-Value="bookDTO.Discount" class="form-control" />
+            <ValidationMessage For="@(() => bookDTO.Discount)" />
+        </div>
+    </div>
+    <br />
+    <div class="col-sm-12">
+        <label for="capa">Imagem (Capa):</label>
+        <InputText @bind-Value="bookDTO.CoverImg" class="form-control" />
+        <ValidationMessage For="@(() => bookDTO.CoverImg)" />
+    </div>
+    <div class="form-group row mt-2">
+        <InputFile OnChange="@LoadCoverImage"></InputFile>
+    </div><br />
+
+    <div class="col-sm-12">
+        <label for="conteudo">Imagem (conteúdo):</label>
+        <InputText @bind-Value="bookDTO.ContentImg" class="form-control" />
+        <ValidationMessage For="@(() => bookDTO.ContentImg)" />
+    </div>
+    <div class="form-group row mt-2">
+        <InputFile OnChange="@LoadContentImage"></InputFile>
+    </div>
+    
+
+    <button type="submit" class="btn btn-success mt-2">
+        @ButtonTextSubmit
+    </button>
+    <button class="btn btn-danger mt-2" @onclick="@(() => nav.NavigateTo("books"))">
+        @ButtonTextCancel
+    </button>
+</EditForm>
+
+@code {
+    private List<CategoryDTO>? categories;
+    private List<AuthorDTO>? authors;
+    private StreamContent? fileContent;
+    private string? fileName;
+    private string? imagemUrl;
+    private string? imageType;
+    private long maxFileSize = 1920 * 1080;
+    private string apiImagens = "https://localhost:7146/images/";
+
+    [Inject]
+    private ICategoryService? _categoryService { get; set; }
+    [Inject]
+    private IAuthorService? _authorService { get; set; }
+    [Inject]
+    private IHttpClientFactory? http { get; set; }
+
+    [Parameter] public BookDTO bookDTO { get; set; }
+    [Parameter] public string ButtonTextSubmit { get; set; } = "Salvar";
+    [Parameter] public string ButtonTextCancel { get; set; } = "Cancelar";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public string? ImagemRemota { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        bookDTO.CoverImg = null;
+        await LoadCategories();
+        await LoadAuthors();
+        if (bookDTO.AuthorId == 0)
+        {
+            bookDTO.AuthorId = authors[0].Id;
+        }
+    }
+
+    private async Task<IEnumerable<CategoryDTO>> LoadCategories()
+    {
+        categories = await _categoryService.GetCategoriesAsync();
+        return categories;
+    }
+
+    private async Task<IEnumerable<AuthorDTO>> LoadAuthors()
+    {
+        authors = await _authorService.GetAuthorsAsync();
+        return authors;
+    }
+
+    private async Task LoadCoverImage(InputFileChangeEventArgs e)
+    {
+        fileContent = new StreamContent(e.File.OpenReadStream(maxFileSize));
+        fileName = e.File.Name;
+        bookDTO.CoverImg = apiImagens + fileName;
+
+        var fileSize = new byte[e.File.Size];
+        await e.File.OpenReadStream().ReadAsync(fileSize);
+        imageType = e.File.ContentType;
+
+        imagemUrl = $"data:{imageType};base64,{Convert.ToBase64String(fileSize)}";
+        this.StateHasChanged();
+    }
+
+    private async Task LoadContentImage(InputFileChangeEventArgs e)
+    {
+        fileContent = new StreamContent(e.File.OpenReadStream(maxFileSize));
+        fileName = e.File.Name;
+        bookDTO.ContentImg = apiImagens + fileName;
+
+        var fileSize = new byte[e.File.Size];
+        await e.File.OpenReadStream().ReadAsync(fileSize);
+        imageType = e.File.ContentType;
+
+        imagemUrl = $"data:{imageType};base64,{Convert.ToBase64String(fileSize)}";
+        this.StateHasChanged();
+    }
+
+    private void SelectedAuthor(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value!.ToString(), out int id))
+        {
+            bookDTO.AuthorId = id;
+        }
+    }
+
+    private void SelectedCategories(ChangeEventArgs e)
+    {
+        if (e.Value != null)
+        {
+            var selectedValues = ((string[])e.Value).Select(int.Parse).ToList();
+            bookDTO.CategoryIds = selectedValues;
+        }
+        else
+        {
+            bookDTO.CategoryIds = new();
+        }
+    }
+
+    private bool IsAuthorSelected(int authorId)
+    {
+        return bookDTO.AuthorId == authorId;
+    }
+}

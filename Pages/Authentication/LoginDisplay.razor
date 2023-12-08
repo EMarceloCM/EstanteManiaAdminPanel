@@ -1,0 +1,11 @@
+﻿@using System.Security.Claims;
+
+<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+    <Authorized>
+        @context.User.Identity!.Name
+        <a href="logout">Log out</a>
+    </Authorized>
+    <NotAuthorized>
+        <a href="login">Log in</a>
+    </NotAuthorized>
+</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
