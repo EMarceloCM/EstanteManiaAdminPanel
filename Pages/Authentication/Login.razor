@@ -1,0 +1,63 @@
+﻿@page "/login"
+@inject IAuthService authService
+@inject NavigationManager nav
+
+<h1>Login</h1>
+
+@if (ShowErrors)
+{
+    <DisplayMessage ErrorMessage="@Error" />
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Credentials</h5>
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+            <ValidationSummary />
+
+            <div class="form-group mt-2">
+                <label for="email">Email</label>
+                <InputText id="email" class="form-control" @bind-Value="loginModel.Email" />
+                <ValidationMessage For="@(() => loginModel.Email)" />
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="password">Password</label>
+                <InputText id="password" type="password" class="form-control" @bind-Value="loginModel.Password" />
+                <ValidationMessage For="@(() => loginModel.Password)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private bool ShowErrors;
+    private string Error = string.Empty;
+
+    private async Task HandleLogin()
+    {
+        ShowErrors = false;
+        try
+        {
+            var result = await authService.Login(loginModel);
+
+            if (result.Token != null)
+            {
+                nav.NavigateTo("/");
+            }
+            else
+            {
+                Error = "Invalid Login.";
+                ShowErrors = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Error = "Error while trying to log in: " + ex.Message;
+            ShowErrors = true;
+        }
+    }
+}

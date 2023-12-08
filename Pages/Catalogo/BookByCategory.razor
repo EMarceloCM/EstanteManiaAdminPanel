@@ -1,0 +1,56 @@
+﻿@page "/BooksFromCategory/{categoryId:int}"
+
+@if (BooksDto is null && ErrorMessage == null)
+{
+    <Spinner />
+}
+else if (ErrorMessage != null)
+{
+    <DisplayMessage ErrorMessage="@ErrorMessage" />
+    ErrorMessage = null;
+}
+else
+{
+    <h2>Livros (@CategoryName)</h2>
+    <h4 style="color:gray;">@booksFromCategory!.Category!.Description</h4>
+    <br />
+
+    @if (BooksDto.Count() > 0)
+    {
+        <div class="row mt-6">
+            <ShowBooks Books="@BooksDto"></ShowBooks>
+        </div>
+    }
+}
+
+@code {
+    [Inject] public ICategoryService? _categoryService { get; set; }
+    [Parameter] public int CategoryId { get; set; }
+    public IEnumerable<BookDTO>? BooksDto { get; set; }
+    public string? CategoryName { get; set; }
+    public string? ErrorMessage { get; set; }
+    private CategoryWithBooksDTO? booksFromCategory { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            booksFromCategory = await _categoryService!.GetCategoryWithBooksAsync(CategoryId);
+            BooksDto = booksFromCategory!.Books;
+
+            if (BooksDto != null && BooksDto.Count() > 0)
+            {
+                CategoryName = booksFromCategory.Category!.Name;
+            }
+            else
+            {
+                var category = await _categoryService.GetCategoryByIdAsync(CategoryId);
+                CategoryName = category.Name;
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = "Category not found. " + ex.Message;
+        }
+    }
+}

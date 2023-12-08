@@ -1,0 +1,38 @@
+﻿@inject NavigationManager nav
+@inject IAuthorService _authorService
+
+<EditForm Model="@authorDTO" OnValidSubmit="@OnValidSubmit">
+    <ValidationSummary />
+    <DataAnnotationsValidator />
+
+    <div class="form-group row">
+        <div class="col-sm-8">
+            <label for="titulo">Nome:</label>
+            <div>
+                <InputText @bind-Value="authorDTO.Name" class="form-control" />
+                <ValidationMessage For="@(() => authorDTO.Name)" />
+            </div>
+
+            <label for="descricao">Descrição:</label>
+            <div>
+                <InputText @bind-Value="authorDTO.Description" class="form-control" />
+                <ValidationMessage For="@(() => authorDTO.Description)" />
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success mt-2">
+        @ButtonTextSubmit
+    </button>
+    <button class="btn btn-danger mt-2" @onclick="@(() => nav.NavigateTo("authors"))">
+        @ButtonTextCancel
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public AuthorDTO authorDTO { get; set; } = new();
+    [Parameter] public string ButtonTextSubmit { get; set; } = "Salvar";
+    [Parameter] public string ButtonTextCancel { get; set; } = "Cancelar";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

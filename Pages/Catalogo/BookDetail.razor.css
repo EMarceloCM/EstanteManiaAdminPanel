@@ -1,0 +1,154 @@
+﻿/* Reset de estilos para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+h3 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.col-md-3 {
+    flex: 0 0 30%;
+    margin-right: 30px;
+}
+
+.col-md-9 {
+    flex: 0 0 65%;
+}
+
+.figure-img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.col-md-9 p {
+    margin-bottom: 15px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+/* Adicionando sombras sutis para uma aparência tridimensional */
+.card {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Adicionando bordas arredondadas para uma aparência suave */
+.rounded {
+    border-radius: 8px;
+}
+
+/* Adicionando um pouco de espaçamento interno para melhor leitura */
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+/* Adicionando um pouco de espaçamento interno para melhor leitura */
+.mb-5 {
+    margin-bottom: 30px;
+}
+
+/* Adicionando bordas arredondadas para imagens */
+.rounded-img {
+    border-radius: 8px;
+}
+
+/* Adicionando uma cor de fundo mais suave para realçar a área de detalhes */
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+/* Adicionando uma borda inferior às cabeçalhos das seções */
+.section-header {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Adicionando estilo à barra de navegação */
+.navbar {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Alterando a cor do link no estado ativo */
+.navbar-nav .nav-item.active .nav-link {
+    color: #28a745;
+}
+
+/* Adicionando uma sombra sutil ao navbar para distingui-lo do conteúdo */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Adicionando algum espaçamento inferior para melhorar a legibilidade */
+.navbar-nav .nav-item {
+    margin-bottom: 5px;
+}
+
+/* Alterando a cor do texto do link no estado ativo */
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Estilo para mensagens de erro */
+.error-message {
+    color: #dc3545;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Adicionando um espaçamento inferior para os botões */
+.btn {
+    margin-top: 10px;
+}
+
+/* Adicionando um espaçamento inferior para os textos */
+p {
+    margin-bottom: 10px;
+}

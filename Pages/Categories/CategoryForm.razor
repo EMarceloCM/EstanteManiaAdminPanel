@@ -1,0 +1,54 @@
+﻿@inject NavigationManager nav
+@inject ICategoryService _categoryService
+
+<EditForm Model="@categoryDTO" OnValidSubmit="@OnValidSubmit">
+    <ValidationSummary />
+    <DataAnnotationsValidator />
+
+    <div class="form-group row">
+        <div class="col-sm-8">
+            <label for="titulo">Nome:</label>
+            <div>
+                <InputText @bind-Value="categoryDTO.Name" class="form-control" />
+                <ValidationMessage For="@(() => categoryDTO.Name)" />
+            </div>
+
+            <label for="descricao">Descrição:</label>
+            <div>
+                <InputText @bind-Value="categoryDTO.Description" class="form-control" />
+                <ValidationMessage For="@(() => categoryDTO.Description)" />
+            </div>
+
+            <div>
+                <label for="iconCSS">IconCSS:</label>
+                <InputText @bind-Value="categoryDTO.IconCSS" class="form-control" />
+                <ValidationMessage For="@(() => categoryDTO.IconCSS)" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(categoryDTO.IconCSS))
+            {
+                <br />
+                <div class="col-sm-2">
+                    <label>Pré Visualização:</label>
+                    <Icon CustomIconName="@categoryDTO.IconCSS" Size="IconSize.x3" ></Icon>
+                </div>
+            }
+        </div>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success mt-2">
+        @ButtonTextSubmit
+    </button>
+    <button class="btn btn-danger mt-2" @onclick="@(() => nav.NavigateTo("categories"))">
+        @ButtonTextCancel
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public CategoryDTO categoryDTO { get; set; } = new();
+    [Parameter] public string ButtonTextSubmit { get; set; } = "Salvar";
+    [Parameter] public string ButtonTextCancel { get; set; } = "Cancelar";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public string? ImagemRemota { get; set; }
+}

@@ -1,0 +1,380 @@
+/* /Layout/CategoryBooksNavMenu.razor.rz.scp.css */
+.navbar-toggler[b-37b48dbrt9] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-37b48dbrt9] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-37b48dbrt9] {
+    font-size: 1.1rem;
+}
+
+.oi[b-37b48dbrt9] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-37b48dbrt9] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-37b48dbrt9] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-37b48dbrt9] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-37b48dbrt9]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+        .nav-item[b-37b48dbrt9]  a.active {
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+        }
+
+        .nav-item[b-37b48dbrt9]  a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-37b48dbrt9] {
+        display: none;
+    }
+
+    .collapse[b-37b48dbrt9] {
+         /*Never collapse the sidebar for wide screens*/ 
+        display: block;
+    }
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+.page[b-c84vvi8qay] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-c84vvi8qay] {
+    flex: 1;
+}
+
+.sidebar[b-c84vvi8qay] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-c84vvi8qay] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-c84vvi8qay]  a, .top-row[b-c84vvi8qay]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-c84vvi8qay]  a:hover, .top-row[b-c84vvi8qay]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-c84vvi8qay]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row[b-c84vvi8qay] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-c84vvi8qay]  a, .top-row[b-c84vvi8qay]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-c84vvi8qay] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-c84vvi8qay] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-c84vvi8qay] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-c84vvi8qay]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-c84vvi8qay], article[b-c84vvi8qay] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Layout/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-87enh75keg] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-87enh75keg] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-87enh75keg] {
+    font-size: 1.1rem;
+}
+
+.bi[b-87enh75keg] {
+    display: inline-block;
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    top: -1px;
+    background-size: cover;
+}
+
+.bi-house-door-fill-nav-menu[b-87enh75keg] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-house-door-fill' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z'/%3E%3C/svg%3E");
+}
+
+.bi-plus-square-fill-nav-menu[b-87enh75keg] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-plus-square-fill' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z'/%3E%3C/svg%3E");
+}
+
+.bi-list-nested-nav-menu[b-87enh75keg] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-list-nested' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+}
+
+.nav-item[b-87enh75keg] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-87enh75keg] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-87enh75keg] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-87enh75keg]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-87enh75keg]  a.active {
+    background-color: rgba(255,255,255,0.37);
+    color: white;
+}
+
+.nav-item[b-87enh75keg]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-87enh75keg] {
+        display: none;
+    }
+
+    .collapse[b-87enh75keg] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-87enh75keg] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+/* /Pages/Catalogo/BookDetail.razor.rz.scp.css */
+/* Reset de estilos para garantir consistência entre navegadores */
+*[b-xxssh3g5ax] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body[b-xxssh3g5ax] {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container[b-xxssh3g5ax] {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+h3[b-xxssh3g5ax] {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.row[b-xxssh3g5ax] {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.col-md-3[b-xxssh3g5ax] {
+    flex: 0 0 30%;
+    margin-right: 30px;
+}
+
+.col-md-9[b-xxssh3g5ax] {
+    flex: 0 0 65%;
+}
+
+.figure-img[b-xxssh3g5ax] {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.col-md-9 p[b-xxssh3g5ax] {
+    margin-bottom: 15px;
+}
+
+.btn-success[b-xxssh3g5ax] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .btn-success:hover[b-xxssh3g5ax] {
+        background-color: #218838;
+    }
+
+/* Adicionando sombras sutis para uma aparência tridimensional */
+.card[b-xxssh3g5ax] {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Adicionando bordas arredondadas para uma aparência suave */
+.rounded[b-xxssh3g5ax] {
+    border-radius: 8px;
+}
+
+/* Adicionando um pouco de espaçamento interno para melhor leitura */
+.mb-3[b-xxssh3g5ax] {
+    margin-bottom: 15px;
+}
+
+/* Adicionando um pouco de espaçamento interno para melhor leitura */
+.mb-5[b-xxssh3g5ax] {
+    margin-bottom: 30px;
+}
+
+/* Adicionando bordas arredondadas para imagens */
+.rounded-img[b-xxssh3g5ax] {
+    border-radius: 8px;
+}
+
+/* Adicionando uma cor de fundo mais suave para realçar a área de detalhes */
+.bg-light[b-xxssh3g5ax] {
+    background-color: #f8f9fa;
+}
+
+/* Adicionando uma borda inferior às cabeçalhos das seções */
+.section-header[b-xxssh3g5ax] {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Adicionando estilo à barra de navegação */
+.navbar[b-xxssh3g5ax] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar-brand[b-xxssh3g5ax] {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Alterando a cor do link no estado ativo */
+.navbar-nav .nav-item.active .nav-link[b-xxssh3g5ax] {
+    color: #28a745;
+}
+
+/* Adicionando uma sombra sutil ao navbar para distingui-lo do conteúdo */
+.navbar[b-xxssh3g5ax] {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Adicionando algum espaçamento inferior para melhorar a legibilidade */
+.navbar-nav .nav-item[b-xxssh3g5ax] {
+    margin-bottom: 5px;
+}
+
+/* Alterando a cor do texto do link no estado ativo */
+.navbar-nav .nav-link[b-xxssh3g5ax] {
+    color: #fff;
+}
+
+/* Estilo para mensagens de erro */
+.error-message[b-xxssh3g5ax] {
+    color: #dc3545;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Adicionando um espaçamento inferior para os botões */
+.btn[b-xxssh3g5ax] {
+    margin-top: 10px;
+}
+
+/* Adicionando um espaçamento inferior para os textos */
+p[b-xxssh3g5ax] {
+    margin-bottom: 10px;
+}

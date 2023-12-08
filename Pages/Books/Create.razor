@@ -1,0 +1,36 @@
+﻿@page "/book/create"
+@using Microsoft.AspNetCore.Authorization
+@inject IBookService _bookService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+@if (Message != null)
+{
+    <DisplayMessage ErrorMessage="Message" />
+}
+
+<h2>Novo Livro</h2>
+
+<BookForm bookDTO="@Book" OnValidSubmit="CreateBook"
+    ButtonTextSubmit="Salvar" ButtonTextCancel="Cancelar">
+</BookForm>
+<br />
+
+@code{
+    private BookDTO Book = new();
+    private string? Message;
+
+    private async Task CreateBook()
+    {
+        try
+        {
+            await _bookService.CreateBookAsync(Book);
+            nav.NavigateTo("books");
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+            Console.WriteLine("Erro: " + ex.Message);
+        }
+    }
+}

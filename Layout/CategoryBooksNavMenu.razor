@@ -1,0 +1,39 @@
+﻿@if (CategoriesDTO == null && ErrorMessage == null)
+{
+    <h3>Carregando...</h3>
+}
+else if (ErrorMessage != null)
+{
+    <DisplayMessage ErrorMessage="@ErrorMessage" />
+}
+else
+{
+    @foreach (var category in CategoriesDTO)
+    {
+        var link = "/BooksFromCategory/" + category.Id;
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="@link">
+                &nbsp;&nbsp;&nbsp;&nbsp;<Icon CustomIconName="@category.IconCSS" aria-hidden="true" Size="IconSize.x4"></Icon>&nbsp;&nbsp;&nbsp;@category.Name
+            </NavLink>
+        </div>
+    }
+}
+
+@code {
+    [Inject] public ICategoryService? _categoryService { get; set; }
+    public IEnumerable<CategoryDTO>? CategoriesDTO { get; set; }
+    public string? ErrorMessage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            CategoriesDTO = await _categoryService!.GetCategoriesAsync();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+}

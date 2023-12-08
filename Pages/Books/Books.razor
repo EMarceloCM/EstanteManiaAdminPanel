@@ -1,0 +1,146 @@
+﻿@page "/books"
+@inject IBookService _bookService
+@inject NavigationManager nav
+
+<h2>Livros</h2>
+
+<div>
+    <a class="btn btn-success" href="book/create">Novo Livro</a>
+</div>
+<br />
+
+@if(books != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Id</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Volume</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Condição</th>
+                <th scope="col">Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td><img class="icon" src="@book.CoverImg" height="75" width="52" /></td>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Description</td>
+                    <td>@book.Volume</td>
+                    <td>@book.Type</td>
+                    <td>@book.Condition</td>
+                    <td>@book.Price</td>
+                    <td><a class="btn btn-primary" href="book/edit/@book.Id">Editar</a></td>
+                    <td><a class="btn btn-danger" @onclick="@(() => Delete(book.Id))" style="color:white;">Deletar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <DisplayMessage ErrorMessage="@errorMessage" />
+}
+
+<Confirm @ref="Confirm" onCancel="CancelConfirm" onConfirm="DeleteConfirmed">
+    <div>Deseja realmente excluir este item ?</div>
+</Confirm>
+
+<div>
+    <label for="PageSize">Itens por página:</label>
+    <select id="PageSize" value="@PageSize" @onchange="PageSizeChanged">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+</div>
+
+<EstanteManiaWebAssembly.Layout.Pagination CurrentPage="currentPage" Raio="3" SelectedPage="SelectedPage" TotalPages="TotalPages">
+</EstanteManiaWebAssembly.Layout.Pagination>
+
+@code {
+    private IEnumerable<BookDTO> books = [];
+    private PaginationBookResponseDTO paginationBookDTO = new();
+    private int TotalPages;
+    private int currentPage = 1;
+    private string? errorMessage = "Não foi possível acessar os livros.";
+    private Confirm Confirm;
+    private int bookID;
+    private int PageSize = 5;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadBooks();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+        catch(Exception ex)
+        {
+            errorMessage = $"Error while loading books: {ex.Message}";
+        }
+    }
+
+    protected async Task LoadBooks(int pagina = 1, int pageSize = 5)
+    {
+        try
+        {
+            paginationBookDTO = await _bookService.GetBookWithPagination(pagina, pageSize);
+            books = paginationBookDTO.Books!;
+            TotalPages = paginationBookDTO.TotalPages;
+        }
+        catch (Exception)
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private async Task SelectedPage(int pagina)
+    {
+        currentPage = pagina;
+        await LoadBooks(pagina);
+    }
+
+    private async void PageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            PageSize = newSize;
+            await LoadBooks(currentPage, PageSize);
+            StateHasChanged();
+        }
+        else
+        {
+            nav.NavigateTo("notauthorized");
+        }
+    }
+
+    private void Delete(int bookId)
+    {
+        Confirm.Show();
+        bookID = bookId;
+    }
+
+    private void CancelConfirm()
+    {
+        Confirm.Hidde();
+    }
+
+    private async Task DeleteConfirmed()
+    {
+        await _bookService.DeleteBookAsync(bookID);
+        Confirm.Hidde();
+        await LoadBooks();
+    }
+}

@@ -1,0 +1,36 @@
+﻿@page "/category/create"
+@using Microsoft.AspNetCore.Authorization
+@inject ICategoryService _categoryService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+@if (Message != null)
+{
+    <DisplayMessage ErrorMessage="Message" />
+}
+
+<h2>Nova Categoria</h2>
+
+<CategoryForm categoryDTO="@Category" OnValidSubmit="@CreateCategory"
+          ButtonTextSubmit="Salvar" ButtonTextCancel="Cancelar">
+</CategoryForm>
+<br />
+
+@code {
+    private CategoryDTO Category = new();
+    private string? Message;
+
+    private async Task CreateCategory()
+    {
+        try
+        {
+            await _categoryService.CreateCategoryAsync(Category);
+            nav.NavigateTo("categories");
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+            Console.WriteLine("Erro: " + ex.Message);
+        }
+    }
+}

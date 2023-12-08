@@ -1,0 +1,36 @@
+﻿@page "/author/create"
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorService _authorService
+@inject NavigationManager nav
+@attribute [Authorize]
+
+@if (Message != null)
+{
+    <DisplayMessage ErrorMessage="Message" />
+}
+
+<h2>Novo Author</h2>
+
+<AuthorForm authorDTO="@Author" OnValidSubmit="@CreateAuthor"
+              ButtonTextSubmit="Salvar" ButtonTextCancel="Cancelar">
+</AuthorForm>
+<br />
+
+@code {
+    private AuthorDTO Author = new();
+    private string? Message;
+
+    private async Task CreateAuthor()
+    {
+        try
+        {
+            await _authorService.CreateAuthorAsync(Author);
+            nav.NavigateTo("authors");
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+            Console.WriteLine("Erro: " + ex.Message);
+        }
+    }
+}
