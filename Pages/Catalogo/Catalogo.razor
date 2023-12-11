@@ -1,6 +1,8 @@
 ﻿@page "/catalogo"
+@using Microsoft.AspNetCore.Authorization
 @inject IBookService _bookService
 @inject NavigationManager nav
+@attribute [Authorize]
 
 @if (books == null)
 {

@@ -1,6 +1,8 @@
 ﻿@page "/books"
+@using Microsoft.AspNetCore.Authorization
 @inject IBookService _bookService
 @inject NavigationManager nav
+@attribute [Authorize]
 
 <h2>Livros</h2>
 
