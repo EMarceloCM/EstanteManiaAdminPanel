@@ -49,11 +49,21 @@ namespace EstanteManiaWebAssembly.Services.Authentication
 
         private static bool TokenExpirou(string tokenDate)
         {
-            DateTime currentDateUtc = DateTime.UtcNow;
-            DateTime expirationDate = DateTime.ParseExact(tokenDate, "yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'", null, 
-                System.Globalization.DateTimeStyles.RoundtripKind);
+            try
+            {
+                if (string.IsNullOrEmpty(tokenDate)) return true;
 
-            return currentDateUtc > expirationDate;
+                DateTime currentDateUtc = DateTime.UtcNow;
+                DateTime expirationDate = DateTime.ParseExact(tokenDate, "yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'", null,
+                    System.Globalization.DateTimeStyles.RoundtripKind);
+
+                return currentDateUtc > expirationDate;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return true;
+            }
         }
 
         private static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)

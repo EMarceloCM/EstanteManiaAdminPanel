@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "EstanteManiaWebAssembly",
   "resources": {
-    "hash": "sha256-c5GhD4xFPLDBprBrG+S4169zzJnHrrYcGCtH+sPkAvM=",
+    "hash": "sha256-4NEREFMNOAaqUjqY4/bu+i6OF8yATxx3nxBOmmVl/WI=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.3h6xlvs5l0.js": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI="
     },
@@ -219,10 +219,10 @@
       "mscorlib.wasm": "sha256-cDuLeL3OCtVtiid/dyex1MVgbuzDSRwZxKzuP2Dp4mg=",
       "netstandard.wasm": "sha256-A0h86SDieTMoU/wU2JTszWCsUmMuguDcbap0b0BzsmI=",
       "System.Private.CoreLib.wasm": "sha256-/0DNIm/T0C07X7Tuz5uR8JvVCoAfEE2MnfPUSjyS9xc=",
-      "EstanteManiaWebAssembly.wasm": "sha256-nWXRJBTSde302Zzho9Vl+2Nw41aHJy3/YdWugJb3X2w="
+      "EstanteManiaWebAssembly.wasm": "sha256-VM5VADN+KQJ7WiotGN+y/w880c+ln/DY77bFdHNwl74="
     },
     "pdb": {
-      "EstanteManiaWebAssembly.pdb": "sha256-XAwWbPVvHGDTo+CkBAOjxKcQqqlLa+Ahv4T3wTRGw/M="
+      "EstanteManiaWebAssembly.pdb": "sha256-pB0Pk/YKgc8zn9M0Aoq50EjsxvBZjU6oWx3TCjxUTnQ="
     }
   },
   "cacheBootResources": true,

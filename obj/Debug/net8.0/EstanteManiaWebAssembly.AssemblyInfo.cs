@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EstanteManiaWebAssembly")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ab2feaf067a4d7a6ad7e8dc1203204a931b2383")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d03803619267aae5f6dee20a364ce2306c50eaec")]
 [assembly: System.Reflection.AssemblyProductAttribute("EstanteManiaWebAssembly")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EstanteManiaWebAssembly")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
